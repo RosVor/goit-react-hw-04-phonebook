@@ -1,0 +1,31 @@
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+  }
+
+  .contact-input {
+    max-width: 250px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .button-submit{
+    max-width: 100px;
+    padding: 5px 10px;
+    align-self: center;
+    cursor: pointer;
+    color: black;
+    border: 1px;
+    border-radius: 20px;
+  }
+
+  .delete-button {
+    color: grey;
+    border: 1px;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px; 
+  }
+  
