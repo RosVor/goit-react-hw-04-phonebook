@@ -37,11 +37,11 @@ function App() {
     if (savedContacts) {
       setContacts(JSON.parse(savedContacts));
     }
-  }, []);
+  }, [setContacts]);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  }, [contacts, setContacts]);
 
   const isContactExist = (name) => {
     return contacts.some((contact) => contact.name.toLowerCase() === name.toLowerCase());
@@ -88,5 +88,4 @@ function App() {
   );
 }
 
-export {App};
-
+export { App };
