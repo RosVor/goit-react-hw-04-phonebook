@@ -34,10 +34,12 @@ function App() {
 
   useEffect(() => {
     const savedContacts = localStorage.getItem('contacts');
-    if (savedContacts) {
+  
+    if (savedContacts !== undefined) {
       setContacts(JSON.parse(savedContacts));
     }
   }, [setContacts]);
+  
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
