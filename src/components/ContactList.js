@@ -1,20 +1,18 @@
 import React from 'react';
-function ContactList({ contacts, onDeleteContact }) {
-  return (
-    <div>
-      <ul>
-        {contacts.map((contact) => (
-          <li key={contact.id}>
-            {contact.name} - {contact.number}
-            <button onClick={() => onDeleteContact(contact.id)} className="delete-button">
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
 
+const ContactList = ({ contacts, onDeleteContact }) => {
+  return (
+    <ul>
+      {contacts.map((contact) => (
+        <li key={contact.id}>
+          {contact.name}: {contact.number}
+          <button  className="button-delete" type="button" onClick={() => onDeleteContact(contact.id)}>
+            Delete
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 export default ContactList;

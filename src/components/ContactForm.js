@@ -1,60 +1,31 @@
-import React, { Component } from 'react';
-import '../css/ContactForm.css';
+import React, { useState } from 'react';
 
-class ContactForm extends Component {
-  state = {
-    name: '',
-    number: '',
+const ContactForm = ({ addContact }) => {
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addContact(name, number);
+    setName('');
+    setNumber('');
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const { name, number } = this.state;
-
-    if (!name || !number) {
-      alert('Please enter name and number.');
-      return;
-    }
-
-    this.props.onAddContact({ name, number });
-
-    this.setState({ name: '', number: '' });
-  };
-
-  handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  };
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit} className="contact-form">
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-            className="contact-input"
-          />
-        </label>
-        <label>
-          Number:
-          <input
-            type="tel"
-            name="number"
-            value={this.state.number}
-            onChange={this.handleChange}
-            className="contact-input"
-          />
-        </label>
-        <button className="button-submit" type="submit">
-          Add Contact
-        </button>
-      </form>
-    );
-  }
-}
+  return (
+    <form onSubmit={handleSubmit} className="contact-form">
+      <label>
+        Name
+        <input className="contact-input" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      </label>
+      <label>
+        Number
+        <input className="contact-input" type="text" value={number} onChange={(e) => setNumber(e.target.value)} />
+      </label>
+      <button className="button-submit" type="submit">Add contact</button>
+    </form>
+  );
+};
 
 export default ContactForm;
+
+

@@ -1,23 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Filter({ onFilterChange }) {
-  const [filter, setFilter] = useState('');
-
-  const handleFilterChange = (e) => {
-    const value = e.target.value;
-    setFilter(value);
-    onFilterChange(value);
-  };
-
+const Filter = ({ filter, onFilterChange }) => {
   return (
-    <input
-      type="text"
-      name="filter"
-      placeholder="Search contacts..."
-      value={filter}
-      onChange={handleFilterChange}
-    />
+    <label >
+      Filter contacts:
+      <input type="text" value={filter} onChange={onFilterChange} />
+    </label>
   );
-}
+};
 
 export default Filter;
