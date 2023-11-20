@@ -2,9 +2,9 @@ import React from 'react';
 
 const Filter = ({ filter, onFilterChange }) => {
   return (
-    <label >
+    <label>
       Filter contacts:
-      <input type="text" value={filter} onChange={onFilterChange} />
+      <input className='filter-input' type="text" value={filter} onChange={onFilterChange} />
     </label>
   );
 };

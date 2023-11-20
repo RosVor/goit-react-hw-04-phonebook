@@ -43,9 +43,9 @@ const App = () => {
   );
 
   return (
-    <div>
-      <h1>Phonebook</h1>
-      <ContactForm addContact={addContact} />
+    <div className='contact-menu'>
+        <h1>Phonebook</h1>
+        <ContactForm addContact={addContact} />
       <h2>Contacts</h2>
       <Filter filter={filter} onFilterChange={handleFilterChange} />
       <ContactList contacts={filteredContacts} onDeleteContact={deleteContact} />

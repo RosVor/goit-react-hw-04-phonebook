@@ -1,3 +1,11 @@
+.contact-menu{
+  max-width: 350px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -10,21 +18,27 @@
     margin-bottom: 20px;
   }
   
+  .filter-input{
+    margin-left: 5px;
+  }
+
   .button-submit {
     max-width: 100px;
     padding: 8px 12px;
     align-self: center;
     cursor: pointer;
-    color: black;
-    border: 1px solid;
+    color: #fff;
+    background-color: #4caf50; /* Зелений колір */
+    border: 1px solid #4caf50;
     border-radius: 20px;
-  }
-  
-  .button-delete {
-    color: grey;
-    border: 1px solid;
+}
+
+.button-delete {
+    color: #fff;
+    border: 1px solid #ccc;
     border-radius: 20px;
     padding: 4px 8px;
     cursor: pointer;
     margin-left: 10px;
-  }
+    background-color: #f44336; /* Червоний колір */
+}
