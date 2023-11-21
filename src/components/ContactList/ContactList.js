@@ -2,9 +2,9 @@ import React from 'react';
 
 const ContactList = ({ contacts, onDeleteContact }) => {
   return (
-    <ul>
+    <ul className='contact-list'>
       {contacts.map((contact) => (
-        <li key={contact.id}>
+        <li className='contact-item' key={contact.id}>
           {contact.name}: {contact.number}
           <button  className="button-delete" type="button" onClick={() => onDeleteContact(contact.id)}>
             Delete
