@@ -1,15 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
 import { nanoid } from 'nanoid';
-import './ContactForm/ContactForm.css'
-import './ContactList/ContactList.css'
-import './Filter/Filter.css'
+import './ContactForm/ContactForm.css';
+import './ContactList/ContactList.css';
+import './Filter/Filter.css';
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
+
+  useEffect(() => {
+    try {
+      const savedContacts = localStorage.getItem('contacts');
+      if (savedContacts) {
+        setContacts(JSON.parse(savedContacts));
+      }
+    } catch (error) {
+      console.error('Error parsing data from localStorage', error);
+    }
+  }, []);
+  
+  
+  useEffect(() => {
+    try {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    } catch (error) {
+      console.error('Error saving data to localStorage', error);
+    }
+  }, [contacts]);
+  
 
   const addContact = (name, number) => {
     const isDuplicate = contacts.some(
@@ -45,9 +66,9 @@ const App = () => {
   );
 
   return (
-    <div className='contact-menu'>
-        <h1>Phonebook</h1>
-        <ContactForm addContact={addContact} />
+    <div className="contact-menu">
+      <h1>Phonebook</h1>
+      <ContactForm addContact={addContact} />
       <h2>Contacts</h2>
       <Filter filter={filter} onFilterChange={handleFilterChange} />
       <ContactList contacts={filteredContacts} onDeleteContact={deleteContact} />
@@ -56,3 +77,4 @@ const App = () => {
 };
 
 export default App;
+

@@ -15,11 +15,21 @@ const ContactForm = ({ addContact }) => {
     <form onSubmit={handleSubmit} className="contact-form">
       <label className="contact-inf">
         Name:
-        <input className="contact-input" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <input  
+        id="contactName"
+        name="contactName"
+        className="contact-input" 
+        type="text" value={name} onChange={(e) => setName(e.target.value)} />
       </label>
       <label className="contact-inf">
         Number:
-        <input className="contact-input" type="text" value={number} onChange={(e) => setNumber(e.target.value)} />
+        <input 
+        type="tel"
+        id="phoneNumber"
+        name="phoneNumber"
+        className="contact-input" 
+        value={number} 
+        onChange={(e) => setNumber(e.target.value)} />
       </label>
       <button className="button-submit" type="submit">Add contact</button>
     </form>
