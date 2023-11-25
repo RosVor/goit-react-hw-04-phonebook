@@ -21,8 +21,7 @@ const App = () => {
       console.error('Error parsing data from localStorage', error);
     }
   }, []);
-  
-  
+
   useEffect(() => {
     try {
       localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -30,7 +29,6 @@ const App = () => {
       console.error('Error saving data to localStorage', error);
     }
   }, [contacts]);
-  
 
   const addContact = (name, number) => {
     const isDuplicate = contacts.some(
