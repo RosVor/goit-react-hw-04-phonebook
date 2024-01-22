@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
-import { nanoid } from 'nanoid';
 import './ContactForm/ContactForm.css';
 import './ContactList/ContactList.css';
 import './Filter/Filter.css';
@@ -10,17 +10,6 @@ import './Filter/Filter.css';
 const App = () => {
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    try {
-      const savedContacts = localStorage.getItem('contacts');
-      if (savedContacts) {
-        setContacts(JSON.parse(savedContacts));
-      }
-    } catch (error) {
-      console.error('Error parsing data from localStorage', error);
-    }
-  }, []);
 
   useEffect(() => {
     try {
@@ -39,11 +28,14 @@ const App = () => {
 
     if (isDuplicate) {
       alert(`${name} or ${number} is already in contacts.`);
-    } else {
-      if (name.trim() !== '' && number.trim() !== '') {
-        const contact = { id: nanoid(), name: name, number: number };
-        setContacts((prevContacts) => [...prevContacts, contact]);
-      }
+    } 
+    else {
+      const newContact = {
+        id: uuidv4(),
+        name,
+        number,
+      };
+      setContacts((prevContacts) => [...prevContacts, newContact]);
     }
   };
 
@@ -59,8 +51,7 @@ const App = () => {
 
   const filteredContacts = contacts.filter(
     (contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()) ||
-      contact.number.includes(filter)
+      contact.name.toLowerCase().includes(filter.toLowerCase()) 
   );
 
   return (

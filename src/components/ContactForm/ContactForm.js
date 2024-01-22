@@ -29,7 +29,9 @@ const ContactForm = ({ addContact }) => {
         name="phoneNumber"
         className="contact-input" 
         value={number} 
-        onChange={(e) => setNumber(e.target.value)} />
+        onChange={(e) => setNumber(e.target.value)} 
+        required
+        />
       </label>
       <button className="button-submit" type="submit">Add contact</button>
     </form>
