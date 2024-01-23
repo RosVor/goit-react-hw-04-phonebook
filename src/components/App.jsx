@@ -8,7 +8,14 @@ import './ContactList/ContactList.css';
 import './Filter/Filter.css';
 
 const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('contacts')) || [];
+    } catch (error) {
+      console.error('Error loading data from localStorage', error);
+      return [];
+    }
+  });
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
@@ -28,8 +35,7 @@ const App = () => {
 
     if (isDuplicate) {
       alert(`${name} or ${number} is already in contacts.`);
-    } 
-    else {
+    } else {
       const newContact = {
         id: uuidv4(),
         name,
@@ -51,7 +57,7 @@ const App = () => {
 
   const filteredContacts = contacts.filter(
     (contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()) 
+      contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   return (
@@ -64,6 +70,5 @@ const App = () => {
     </div>
   );
 };
-
 export default App;
 
